@@ -125,6 +125,7 @@
                 this.$http.post("/user/update",this.userData).then(res=>{
                     if (res.status===200){
                         Message.success("操作成功");
+                        localStorage.setItem("user",JSON.stringify(this.userData));
                         this.initData();
                     }
                 })
