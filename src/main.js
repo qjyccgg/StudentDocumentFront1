@@ -14,6 +14,7 @@ window.echarts = require("echarts");
 Vue.use(ElementUI);
 Vue.use(VueQuillEditor);
 Vue.config.productionTip = false;
+window.echarts = require("echarts");
 Axios.interceptors.response.use(function (response) {
     return response
 },function (error) {

@@ -150,6 +150,12 @@
                                 localStorage.setItem("role",JSON.stringify(res.data));
                             }
                         });
+                        //缓存当前用户的健康档案
+                        self.$http.get("/checkInfo/getCurrentCheckInfo/"+user.id).then(res=>{
+                            if (res.status===200){
+                                localStorage.setItem("checkData",JSON.stringify(res.data));
+                            }
+                        });
                         //缓存当前用户信息
                         localStorage.setItem("user",JSON.stringify(user));
                         self.$http.get("/resources/getMenuByUserId",{params:{"userId":user.id,"typeId":0}}).then(res=>{

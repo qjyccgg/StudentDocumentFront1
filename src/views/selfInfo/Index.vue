@@ -1,10 +1,29 @@
 <template>
     <div style="display: flex;flex-direction: column;align-items: center;width: 100%;">
-        <div style="margin: 40px 0"><h1>个人信息</h1></div>
-        <el-card style="width: 80%">
+        <el-card style="width: 80%;margin-top: 20px">
+            <el-divider content-position="left">身高体重分析</el-divider>
+            <el-row style="text-align: center">
+                <el-col :span="8">当前身高:{{heightData}}cm
+                   <div style="width: 100%;height: 300px" id="line"></div>
+                </el-col>
+                <el-col :span="8">当前体重:{{weightData}}kg
+                    <div style="width: 100%;height: 300px" id="bar"></div>
+                </el-col>
+                <el-col :span="8">当前BIM指数:{{bim}}({{suggestion}})
+                    <div style="width: 100%;height: 300px" id="pie"></div>
+                </el-col>
+            </el-row>
+            <el-divider content-position="left">基本信息</el-divider>
             <div style="width: 100%;display: flex;align-items: center;flex-direction: column">
                 <el-form :model="userData" ref="userData" label-width="32%" style="width: 90%;margin-top: 40px" label-position="left">
-
+                    <template>
+                        <el-form-item align="right" v-show="!disable">
+                            <el-button :disabled="disable" type="primary" @click="saveData">保存</el-button>
+                        </el-form-item>
+                        <el-form-item align="right" v-show="disable">
+                            <el-button :disabled="!disable" type="info" @click="disable=!disable">修改</el-button>
+                        </el-form-item>
+                    </template>
                     <el-row>
                         <el-col :span="18">
                             <el-row>
@@ -89,11 +108,6 @@
                     <el-form-item label="毕业学校或工作单位" label-width="10%" >
                         <el-input type="textarea" :disabled="disable" :rows="4" v-model="userData.workPlace"></el-input>
                     </el-form-item>
-                    <template>
-                        <el-form-item align="right">
-                            <el-button :disabled="disable" type="primary" @click="saveData">保存</el-button>
-                        </el-form-item>
-                    </template>
                 </el-form>
             </div>
         </el-card>
@@ -109,7 +123,15 @@
         data(){
             return{
                 userData:{},
-                disable:false
+                disable:true,
+                heightData:0,
+                weightData:0,
+                bim:0,
+                suggestion:"",
+                label:[],
+                height:[],
+                weight:[]
+
             }
         },
         methods:{
@@ -126,13 +148,108 @@
                     if (res.status===200){
                         Message.success("操作成功");
                         localStorage.setItem("user",JSON.stringify(this.userData));
+                        this.disable = !this.disable;
                         this.initData();
                     }
                 })
-            }
+            },
+            getOptions(){
+                console.log(this.label);
+                let Line = echarts.init(document.getElementById("line"));
+                let Bar = echarts.init(document.getElementById("bar"));
+                let Pie = echarts.init(document.getElementById("pie"));
+                let heightOption = {
+                    xAxis: {
+                        type: 'category',
+                        data: this.label,
+                        name: "学期"
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'line'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter:"{b} <br/>{a} : {c} (cm)"
+                    },
+                    yAxis: {
+                        type: 'value',
+                        name: "身高（cm）"
+                    },
+                    series: [{
+                        data: this.height,
+                        type: 'line',
+                        name:'身高',
+                    }]
+                };
+                let weightOption  = {
+                    xAxis: {
+                        type: 'category',
+                        data: this.label,
+                    },
+                    color: ['#3398DB'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        formatter:"{b} <br/>{a} : {c} (kg)"
+                    },
+                    yAxis: {
+                        type: 'value',
+                        name: "体重（kg）"
+                    },
+                    series: [{
+                        data: this.weight,
+                        type: 'bar',
+                        barWidth: '20%',
+                        name:'体重',
+                    }]
+                };
+                let bimOption = {
+                    tooltip : {
+                        formatter: "{a} <br/>{b} : {c}"
+                    },
+                    series: [
+                        {
+                            name: 'BIM指数',
+                            type: 'gauge',
+                            detail: {formatter:'{value}'},
+                            data: [{value: this.bim, name: '数值'}]
+                        }
+                    ]
+                };
+                Line.setOption(heightOption);
+                Bar.setOption(weightOption);
+                Pie.setOption(bimOption);
+            },
+            getDataAnalysis(){
+                let user = JSON.parse(localStorage.getItem("user"));
+                let checkData =  JSON.parse(localStorage.getItem("checkData"));
+                this.heightData = checkData.height;
+                this.weightData = checkData.weight;
+                this.$http.get("/checkInfo/getBim",{params:{"height":this.heightData,"weight":this.weightData}}).then(res=>{
+                    if (res.status===200){
+                        this.bim = res.data.bim;
+                        this.suggestion = res.data.suggestion;
+                    }
+                });
+                this.$http.get("/checkInfo/getDataAnalysis/"+user.id).then(res=>{
+                    if (res.status===200){
+                        this.label = res.data.label;
+                        this.height = res.data.height;
+                        this.weight = res.data.weight;
+                        this.getOptions();
+                    }
+                }).catch(()=>Message.error("访问出错!"))
+            },
+
         },
         mounted(){
+            this.getDataAnalysis();
             this.initData();
+        },
+        created(){
+
         }
     }
 </script>
