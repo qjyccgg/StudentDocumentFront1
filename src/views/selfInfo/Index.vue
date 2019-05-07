@@ -245,8 +245,8 @@
 
         },
         mounted(){
-            this.getDataAnalysis();
             this.initData();
+            this.getDataAnalysis();
         },
         created(){
 

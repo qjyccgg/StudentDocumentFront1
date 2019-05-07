@@ -25,6 +25,7 @@ export default new Router({
                 route("/users","/user/Index","学生信息管理"),
                 route("/healthManage","/health/HealthList","健康档案(体检数据)管理"),
                 route("/selfHealth","/health/SelfHealthList","个人健康档案"),
+                route("/analysis","/health/Analysis","体检数据分析"),
                 route("/knowledge","/knowledge/Index","健康知识管理"),
                 route("/read","/knowledge/Read","健康知识阅读"),
                 route("/healthSuggest","/suggest/Index","健康建议"),

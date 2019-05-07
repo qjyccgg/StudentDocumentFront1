@@ -673,7 +673,7 @@
             },
             addUser(){
                 this.title = "添加健康档案";
-                this. checkInfoData = {};
+                this.checkInfoData = {};
                 this.dialogVisible = true;
                 this.disable = false;
             },
@@ -735,22 +735,24 @@
                let data =  this.userOptions.filter((value) => {
                    return value.id === this.checkInfoData.userId;
                });
-                this.checkInfoData.college = data[0].college;
-                this.checkInfoData.major = data[0].major;
-                this.checkInfoData.grade = data[0].grade;
-                this.checkInfoData.stuNo = data[0].stuNo;
-                this.checkInfoData.name = data[0].name;
-                this.checkInfoData.sex = data[0].sex;
-                this.checkInfoData.birth = data[0].birth;
-                this.checkInfoData.realAge = data[0].realAge;
-                this.checkInfoData.cultureLevel = data[0].cultureLevel;
-                this.checkInfoData.nation = data[0].nation;
-                this.checkInfoData.occupation = data[0].occupation;
-                this.checkInfoData.nativePlace = data[0].nativePlace;
-                this.checkInfoData.presentAddress = data[0].presentAddress;
-                this.checkInfoData.workPlace = data[0].workPlace;
-                this.checkInfoData.teacherId = data[0].teacherId;
-                this.checkInfoData.photo = data[0].photo;
+                this.checkInfoData = JSON.parse(JSON.stringify(data));
+                this.checkInfoData.historyCheck = "";
+                // this.checkInfoData.college = data[0].college;
+                // this.checkInfoData.major = data[0].major;
+                // this.checkInfoData.grade = data[0].grade;
+                // this.checkInfoData.stuNo = data[0].stuNo;
+                // this.checkInfoData.name = data[0].name;
+                // this.checkInfoData.sex = data[0].sex;
+                // this.checkInfoData.birth = data[0].birth;
+                // this.checkInfoData.realAge = data[0].realAge;
+                // this.checkInfoData.cultureLevel = data[0].cultureLevel;
+                // this.checkInfoData.nation = data[0].nation;
+                // this.checkInfoData.occupation = data[0].occupation;
+                // this.checkInfoData.nativePlace = data[0].nativePlace;
+                // this.checkInfoData.presentAddress = data[0].presentAddress;
+                // this.checkInfoData.workPlace = data[0].workPlace;
+                // this.checkInfoData.teacherId = data[0].teacherId;
+                // this.checkInfoData.photo = data[0].photo;
             },
             judgeCheckIsExist(){
                 if (this.checkInfoData.userId === "" || this.checkInfoData.userId == null){
