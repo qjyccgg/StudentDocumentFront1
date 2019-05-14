@@ -35,14 +35,14 @@
                 let firstEcharts = echarts.init(document.getElementById("first"));
                 let firstOptions = {
                     title : {
-                        text: '未来一周气温变化',
-                        subtext: '纯属虚构'
+                        text: '学生最高最低PIM值变化分析',
+                        subtext: '模拟'
                     },
                     tooltip : {
                         trigger: 'axis'
                     },
                     legend: {
-                        data:['最高气温','最低气温']
+                        data:['最高PIM','最低PIM']
                     },
                     toolbox: {
                         show : true,
@@ -59,22 +59,22 @@
                         {
                             type : 'category',
                             boundaryGap : false,
-                            data : ['周一','周二','周三','周四','周五','周六','周日']
+                            data : ['大一上学期','大一下学期','大二上学期','大二下学期','大三上学期','大三下学期','大四']
                         }
                     ],
                     yAxis : [
                         {
                             type : 'value',
                             axisLabel : {
-                                formatter: '{value} °C'
+                                formatter: '{value}'
                             }
                         }
                     ],
                     series : [
                         {
-                            name:'最高气温',
+                            name:'最高PIM',
                             type:'line',
-                            data:[11, 11, 15, 13, 12, 13, 10],
+                            data:[30, 39, 36, 35, 34, 33, 38],
                             markPoint : {
                                 data : [
                                     {type : 'max', name: '最大值'},
@@ -88,12 +88,12 @@
                             }
                         },
                         {
-                            name:'最低气温',
+                            name:'最低PIM',
                             type:'line',
-                            data:[1, -2, 2, 5, 3, 2, 0],
+                            data:[19, 22, 21, 19, 20, 21, 19],
                             markPoint : {
                                 data : [
-                                    {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+                                    {name : '这段期间', value : -2, xAxis: 1, yAxis: -1.5}
                                 ]
                             },
                             markLine : {
@@ -104,7 +104,6 @@
                         }
                     ]
                 };
-                firstEcharts.setOption(firstOptions);
                 let secondEcharts = echarts.init(document.getElementById("second"));
                 let secondOptions = {
                     tooltip : {
@@ -114,7 +113,7 @@
                         }
                     },
                     legend: {
-                        data:['利润', '支出', '收入']
+                        data:['偏胖', '正常', '偏瘦']
                     },
                     grid: {
                         left: '3%',
@@ -131,12 +130,12 @@
                         {
                             type : 'category',
                             axisTick : {show: false},
-                            data : ['周一','周二','周三','周四','周五','周六','周日']
+                            data : ['大一上学期','大一下学期','大二上学期','大二下学期','大三上学期','大三下学期','大四']
                         }
                     ],
                     series : [
                         {
-                            name:'利润',
+                            name:'偏胖',
                             type:'bar',
                             label: {
                                 normal: {
@@ -144,54 +143,51 @@
                                     position: 'inside'
                                 }
                             },
-                            data:[200, 170, 240, 244, 200, 220, 210]
+                            data:[28, 29, 30, 37, 34, 33, 30]
                         },
                         {
-                            name:'收入',
+                            name:'正常',
                             type:'bar',
-                            stack: '总量',
+                            stack: '斤',
                             label: {
                                 normal: {
                                     show: true
                                 }
                             },
-                            data:[320, 302, 341, 374, 390, 450, 420]
+                            data:[20, 20, 22, 21, 23, 24, 25]
                         },
                         {
-                            name:'支出',
+                            name:'偏瘦',
                             type:'bar',
-                            stack: '总量',
+                            stack: '%',
                             label: {
                                 normal: {
                                     show: true,
                                     position: 'left'
                                 }
                             },
-                            data:[-120, -132, -101, -134, -190, -230, -210]
+                            data:[19, 18, 17, 16, 19, 18, 20]
                         }
                     ]
                 };
-                secondEcharts.setOption(secondOptions);
                 let thirdEcharts = echarts.init(document.getElementById("third"));
                 let thirdOption = {
                     xAxis: {
                         type: 'category',
-                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        data : ['大一上学期','大一下学期','大二上学期','大二下学期','大三上学期','大三下学期','大四']
                     },
                     yAxis: {
                         type: 'value'
                     },
                     series: [{
-                        data: [820, 932, 901, 934, 1290, 1330, 1320],
+                        data: [55, 50, 60, 65, 70, 60, 62, 64],
                         type: 'line'
                     }]
                 };
-                thirdEcharts.setOption(thirdOption);
                 let fourEcharts = echarts.init(document.getElementById("four"));
                 let fourOption = {
                     title : {
-                        text: '某站点用户访问来源',
-                        subtext: '纯属虚构',
+                        text: '当前肥胖占比',
                         x:'center'
                     },
                     tooltip : {
@@ -201,20 +197,20 @@
                     legend: {
                         orient: 'vertical',
                         left: 'left',
-                        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                        data: ['偏瘦','偏胖','极瘦','极胖','健康体重']
                     },
                     series : [
                         {
-                            name: '访问来源',
+                            name: '健康分析',
                             type: 'pie',
                             radius : '55%',
                             center: ['50%', '60%'],
                             data:[
-                                {value:335, name:'直接访问'},
-                                {value:310, name:'邮件营销'},
-                                {value:234, name:'联盟广告'},
-                                {value:135, name:'视频广告'},
-                                {value:1548, name:'搜索引擎'}
+                                {value:335, name:'偏瘦'},
+                                {value:310, name:'偏胖'},
+                                {value:234, name:'极瘦'},
+                                {value:135, name:'极胖'},
+                                {value:1548, name:'健康体重'}
                             ],
                             itemStyle: {
                                 emphasis: {
@@ -226,13 +222,15 @@
                         }
                     ]
                 };
+                firstEcharts.setOption(firstOptions);
+                secondEcharts.setOption(secondOptions);
+                thirdEcharts.setOption(thirdOption);
                 fourEcharts.setOption(fourOption);
-
-
             }
         },
         mounted(){
-            this.getAnalysisData();
+             this.getAnalysisData();
+
         }
     }
 </script>
