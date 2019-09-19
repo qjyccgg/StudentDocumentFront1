@@ -2,28 +2,13 @@
 
 ## Project setup
 ```
-yarn install
+1. yarn install
+2. yarn run serve
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## 登录说明
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+账户:admin 
+密码: 123
 
-### Run your tests
-```
-yarn run test
-```
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
