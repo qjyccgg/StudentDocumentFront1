@@ -24,7 +24,7 @@
         name: "UploadImg",
         data(){
             return{
-                url:"http://localhost:8080/api/uploadFile/upload"
+                url:"/api/uploadFile/upload"
             }
         },
         methods:{
