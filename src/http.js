@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 
 Axios.defaults.withCredentials = true; //允许请求携带cookie
-Axios.defaults.baseURL = "http://localhost:8080/api"; // 设置axios的基础请求路径
+Axios.defaults.baseURL = "/api"; // 设置axios的基础请求路径
 Axios.defaults.timeout = 2000; // 设置axios的请求时间
 
 Axios.loadData = async function (url) {
