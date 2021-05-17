@@ -43,7 +43,7 @@
                         align="center">
                 </el-table-column>
                 <el-table-column
-                        label="角色Id"
+                        label="角色"
                         align="center">
                     <template slot-scope="scope">
                         <span>{{scope.row.roleId | RoleNameFilter}}</span>
