@@ -43,11 +43,16 @@
                         align="center">
                 </el-table-column>
                 <el-table-column
-                        label="角色Id"
+                        label="角色"
                         align="center">
                     <template slot-scope="scope">
                         <span>{{scope.row.roleId | RoleNameFilter}}</span>
                     </template>
+                </el-table-column>
+                <el-table-column
+                  prop="username"
+                  label="账号"
+                >
                 </el-table-column>
                 <el-table-column
                         prop="stuNo"

@@ -8,19 +8,19 @@
                         <div>
                             <label style="font-size: 16px;font-weight: 600">读取状态:</label>
                             <el-select style="width: 150px;margin-left: 5px" value="searchDTO.status" v-model="searchDTO.isRead" @change="initDate" clearable>
-                                <el-option value="1" label="已读"></el-option>
-                                <el-option value="0" label="未读"></el-option>
+                                <el-option value="1" label="已读" />
+                                <el-option value="0" label="未读" />
                             </el-select>
                         </div>
                         <div v-show="messageSort === '我收到的建议'">
                             <label style="font-size: 16px;font-weight: 600">医师描述:</label>
                             <el-select style="width: 150px;margin-left: 5px" :value="searchDTO.office" v-model="searchDTO.office" @change="initDate" clearable>
-                                <el-option v-for="item in roleOptions" :value="item.roleName" :key="item.id" :label="item.roleName"></el-option>
+                                <el-option v-for="item in roleOptions" :value="item.roleName" :key="item.id" :label="item.roleName" />
 
                             </el-select>
                         </div>
                         <el-input style="width: 300px;margin-right: 15px" prefix-icon="el-icon-search" placeholder="根据消息内容查询" v-model="searchDTO.content">
-                            <el-button slot="append" icon="el-icon-search" @click="initDate"></el-button>
+                            <el-button slot="append" icon="el-icon-search" @click="initDate" />
                         </el-input>
                         <el-button type="primary" @click="markToRead">标记为已读</el-button>
                         <el-button type="info" @click="markToUnRead">标记为未读</el-button>
