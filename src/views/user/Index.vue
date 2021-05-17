@@ -50,6 +50,11 @@
                     </template>
                 </el-table-column>
                 <el-table-column
+                  prop="username"
+                  label="账号"
+                >
+                </el-table-column>
+                <el-table-column
                         prop="stuNo"
                         label="学号"
                         width="180">
