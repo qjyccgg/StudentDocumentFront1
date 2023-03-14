@@ -515,11 +515,6 @@
 
                     </div>
 
-
-
-
-
-
                     <template>
                         <el-form-item align="right" v-show="!disable">
                             <el-button type="success" @click="disable=false">编辑</el-button>

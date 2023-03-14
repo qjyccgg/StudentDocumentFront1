@@ -2,12 +2,12 @@
     <div class="main">
         <div class="header">
             <div class="logo">
-                <a href="http://www.cqjtu.com" target="_blank">
-                    <img src="@/assets/cqjtu.jpg" style="width: 60px;height: 60px"/>
+                <a href="http://www.asnc.edu.cn" target="_blank">
+                    <img src="@/assets/assf.png" style="width: 60px;height: 60px"/>
                 </a>
                 <div style="height: 60px;background: linear-gradient(to right, white, #737c83);">
                     <router-link to="/index" style="text-decoration: none">
-                        <h3 style="color: #3a8ee6;letter-spacing: 3px;">大学生健康档案管理系统</h3>
+                        <h3 style="color: #3a8ee6;letter-spacing: 3px;">大学生医疗健康服务系统</h3>
                     </router-link>
                 </div>
             </div>
@@ -32,8 +32,8 @@
         <div class="app">
             <div class="aside">
                 <div class="menu">
-                    <h1 style="padding: 60px 0;">大学生健康管理系统</h1>
-                    <div class="menu-body">
+                    <h1 style="padding: 40px 0;">大学生医疗健康管理系统</h1>
+                    <div class="menu-body" style="width: 1000px">
                         <div class="item1" v-for="(item,index) in generateMenu" :style="{'background-color': item.color}" :key="index">
                           <div class="item-div" @click="toDetail(item.url)">
                               <!--<img :src="item.pic" style="width: 100px;height: 100px;"/>-->
@@ -211,7 +211,7 @@
             height: calc(100% - 60px);
             overflow-x: auto;
             .menu{
-                background: url("../assets/school.jpg");
+                background: url("../assets/asnc.jpg");
                 background-size: cover;
                 display: flex;
                 flex-direction: column;
@@ -228,12 +228,12 @@
                     align-content: flex-start;
                     justify-content: center;
                     div:nth-child(n+6){
-                        width: 388px;
-                        height: 200px;
+                        width: 200px;
+                        height: 180px;
                     }
                     .item1{
-                        width: 228px;
-                        height: 200px;
+                        width: 200px;
+                        height: 180px;
                         margin: 5px;
                         transition: .3s;
                         cursor: pointer;

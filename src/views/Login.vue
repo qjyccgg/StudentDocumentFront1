@@ -1,9 +1,9 @@
 <template>
   <div class="login" v-loading="loading">
     <el-card style="background-color: rgba(255, 255, 255, 0.8);">
-      <img src="@/assets/cqjtu.jpg" alt="重庆交通大学" style="width: 100px;height: 100px">
+    <img src="@/assets/assf.png" alt="鞍山师范学院" style="width: 100px;height: 100px">
       <el-form :model="loginForm" :rules="rules" ref="loginForm">
-        <h1 style="margin: 4px 0">大学生健康档案管理系统</h1>
+        <h1 style="margin: 4px 0">大学生医疗健康服务系统</h1>
         <span
           style="font-size:20px;letter-spacing: 20px;text-shadow: -4px -4px 5px #aaa;font-variant: all-small-caps;word-spacing: 3px;">欢迎登陆</span>
         <el-form-item style="margin-top: 43px" prop="username">
@@ -249,7 +249,7 @@
     align-items: center;
     width: 100%;
     height: calc(~'100vh');
-    background: url("../assets/school.jpg");
+    background: url("../assets/asnc.jpg");
     background-size: cover;
 
     .el-card {

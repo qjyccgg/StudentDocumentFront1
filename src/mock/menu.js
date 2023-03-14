@@ -40,7 +40,8 @@ let menu = [
         url:"/permission",
         pic:"../assets/menu/权限管理.png",
         children:[]
-    }
+    },
+
 ];
 
 export default menu;
